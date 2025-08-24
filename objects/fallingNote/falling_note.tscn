@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnwajv0pgm6h3"]
+
+[ext_resource type="Script" uid="uid://bqxkx65f4n8e6" path="res://objects/fallingNote/falling_note.gd" id="1_pds1w"]
+[ext_resource type="Texture2D" uid="uid://busmpq2jh1huv" path="res://objects/fallingNote/leftArrow.png" id="2_tyuvy"]
+[ext_resource type="Texture2D" uid="uid://bu6i7a8dgw4b6" path="res://objects/fallingNote/downArrow.png" id="3_bsbvd"]
+[ext_resource type="Texture2D" uid="uid://b37mx6tfl4641" path="res://objects/fallingNote/upArrow.png" id="4_w3n04"]
+[ext_resource type="Texture2D" uid="uid://psp80k0oams" path="res://objects/fallingNote/rightArrow.png" id="5_lr8gr"]
+
+[node name="fallingNote" type="Node2D"]
+script = ExtResource("1_pds1w")
+
+[node name="LeftArrow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_tyuvy")
+
+[node name="DownArrow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_bsbvd")
+
+[node name="UpArrow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_w3n04")
+
+[node name="RightArrow" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_lr8gr")

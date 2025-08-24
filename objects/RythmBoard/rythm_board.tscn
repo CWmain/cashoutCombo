@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf48up41iwpc"]
+
+[ext_resource type="Script" uid="uid://b586nog4q5164" path="res://objects/RythmBoard/rythm_board.gd" id="1_v63m8"]
+[ext_resource type="Texture2D" uid="uid://b4jja7yn4ubwu" path="res://objects/RythmBoard/leftArrow.png" id="2_3fgln"]
+[ext_resource type="Texture2D" uid="uid://qrgjpardfk0m" path="res://objects/RythmBoard/downArrow.png" id="3_lw3mo"]
+[ext_resource type="Texture2D" uid="uid://d2mk0r3ukf71" path="res://objects/RythmBoard/upArrow.png" id="4_8hxqi"]
+[ext_resource type="Texture2D" uid="uid://buxynqjiu16nl" path="res://objects/RythmBoard/rightArrow.png" id="5_8g3am"]
+
+[node name="RythmBoard" type="CanvasLayer"]
+script = ExtResource("1_v63m8")
+
+[node name="Arrows" type="Node" parent="."]
+
+[node name="LeftArrow" type="Sprite2D" parent="Arrows"]
+position = Vector2(60, 483)
+texture = ExtResource("2_3fgln")
+
+[node name="DownArrow" type="Sprite2D" parent="Arrows"]
+position = Vector2(160, 483)
+texture = ExtResource("3_lw3mo")
+
+[node name="UpArrow" type="Sprite2D" parent="Arrows"]
+position = Vector2(260, 483)
+texture = ExtResource("4_8hxqi")
+
+[node name="RightArrow" type="Sprite2D" parent="Arrows"]
+position = Vector2(361, 483)
+texture = ExtResource("5_8g3am")
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="LeftDownLine" type="Line2D" parent="Lines"]
+position = Vector2(10, 1)
+points = PackedVector2Array(103, 7, 108, 628)
+
+[node name="DownUpLine" type="Line2D" parent="Lines"]
+position = Vector2(15, 2)
+points = PackedVector2Array(199, 4, 197, 632)
+
+[node name="UpRightLine" type="Line2D" parent="Lines"]
+position = Vector2(14, 8)
+points = PackedVector2Array(304, 19, 287, 619)
+
+[node name="TopLine" type="Line2D" parent="Lines"]
+points = PackedVector2Array(6, 426, 394, 421)
+
+[node name="BottomLine" type="Line2D" parent="Lines"]
+points = PackedVector2Array(11, 537, 381, 532)
