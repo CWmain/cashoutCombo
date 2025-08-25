@@ -3,17 +3,20 @@ extends CanvasLayer
 # The amount of notes in a burst
 @export var noteBurstContents: int = 4
 
+# The minimum timer gap for burst and noteGap
+const MIN_GAP: float = 0.1
+
 #The time between each note burst
 @export var noteBurstGap: float = 1:
 	set(value):
-		noteBurstGap = value
+		noteBurstGap = max(MIN_GAP, value)
 		if note_burst_timer != null:
 			note_burst_timer.wait_time = noteBurstGap
 
 #The time between each note
-@export var noteGap: float = 0.2:
+@export var noteGap: float = 0.5:
 	set(value):
-		noteGap = value
+		noteGap = max(MIN_GAP, value)
 		if note_gap_timer != null:
 			note_gap_timer.wait_time = noteGap
 
@@ -83,9 +86,23 @@ func _on_noteGapTimer() -> void:
 	
 func _on_noteBurstTimer() -> void:
 	spawnedNotes = 0
+	randomDiffIncrease()
 	note_burst_timer.stop()
 	note_gap_timer.start()
 
+# Selects a random stat to increment difficulty
+func randomDiffIncrease() -> void:
+	var r = randf()
+
+	if r < 0.25:
+		noteBurstContents += 1
+	elif r < 0.5:
+		noteBurstGap -= 0.1
+	elif r < 0.75:
+		noteGap -= 0.1
+	elif r < 1:
+		noteFallSpeed += 0.5
+	
 func spawnRandomNote() -> void:
 	var r = randf()
 	var newNote: FallingNote

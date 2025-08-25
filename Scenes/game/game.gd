@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 func _on_miss() -> void:
 	score_board.mult -= 0.5
+	score_board.flat -= 5
 	
 func _on_good() -> void:
 	score_board.mult += 0.01

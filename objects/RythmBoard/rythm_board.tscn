@@ -8,7 +8,6 @@
 
 [node name="RythmBoard" type="CanvasLayer"]
 script = ExtResource("1_v63m8")
-noteGap = 0.5
 
 [node name="Arrows" type="Node" parent="."]
 
