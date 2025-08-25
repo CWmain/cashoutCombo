@@ -8,6 +8,7 @@
 
 [node name="RythmBoard" type="CanvasLayer"]
 script = ExtResource("1_v63m8")
+noteGap = 0.5
 
 [node name="Arrows" type="Node" parent="."]
 
@@ -46,3 +47,11 @@ points = PackedVector2Array(6, 426, 394, 421)
 
 [node name="BottomLine" type="Line2D" parent="Lines"]
 points = PackedVector2Array(11, 537, 381, 532)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="noteBurstTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+
+[node name="noteGapTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true

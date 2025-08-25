@@ -4,7 +4,7 @@ class_name FallingNote
 enum Directions {LEFT, DOWN, UP, RIGHT}
 
 @export var direction: Directions
-@export var fallSpeed: float = 5
+@export var fallSpeed: float = 2
 
 var active: bool = true
 

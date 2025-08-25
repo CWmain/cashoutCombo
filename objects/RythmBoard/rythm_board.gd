@@ -1,7 +1,28 @@
 extends CanvasLayer
 
-@export var arrowSpawnTimer: float
-@export var arrowFallSpeed: float
+# The amount of notes in a burst
+@export var noteBurstContents: int = 4
+
+#The time between each note burst
+@export var noteBurstGap: float = 1:
+	set(value):
+		noteBurstGap = value
+		if note_burst_timer != null:
+			note_burst_timer.wait_time = noteBurstGap
+
+#The time between each note
+@export var noteGap: float = 0.2:
+	set(value):
+		noteGap = value
+		if note_gap_timer != null:
+			note_gap_timer.wait_time = noteGap
+
+@export var noteFallSpeed: float = 1
+
+@onready var note_gap_timer: Timer = %noteGapTimer
+@onready var note_burst_timer: Timer = %noteBurstTimer
+
+var spawnedNotes: int = 0
 
 var leftNotes: Array[FallingNote]
 var downNotes: Array[FallingNote]
@@ -17,6 +38,16 @@ const FALLING_NOTE = preload("res://objects/fallingNote/falling_note.tscn")
 # Derived from rough placement of TopLine and BottomLine
 const TOP_LINE: int = 420
 const BOTTOM_LINE: int = 540
+
+func _ready() -> void:
+	note_gap_timer.wait_time = noteGap
+	note_burst_timer.wait_time = noteBurstGap
+	
+	note_gap_timer.timeout.connect(_on_noteGapTimer)
+	note_burst_timer.timeout.connect(_on_noteBurstTimer)
+	
+	startGame()
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("RandomNote"):
 		spawnRandomNote()
@@ -39,10 +70,27 @@ func _process(delta: float) -> void:
 			miss.emit()
 			column.pop_front()
 
+func startGame() -> void:
+	note_gap_timer.start()
+
+func _on_noteGapTimer() -> void:
+	if spawnedNotes == noteBurstContents:
+		note_gap_timer.stop()
+		note_burst_timer.start()
+		return
+	spawnRandomNote()
+	spawnedNotes += 1
+	
+func _on_noteBurstTimer() -> void:
+	spawnedNotes = 0
+	note_burst_timer.stop()
+	note_gap_timer.start()
+
 func spawnRandomNote() -> void:
 	var r = randf()
 	var newNote: FallingNote
 	newNote = FALLING_NOTE.instantiate()
+	newNote.fallSpeed = noteFallSpeed
 	if r < 0.25:
 		newNote.direction = FallingNote.Directions.LEFT
 		newNote.position.x = 60
