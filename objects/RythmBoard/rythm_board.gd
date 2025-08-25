@@ -9,6 +9,10 @@ var upNotes: Array[FallingNote]
 var rightNotes: Array[FallingNote]
 var columnNotes: Array = [leftNotes, downNotes, upNotes, rightNotes]
 
+signal miss
+signal good
+signal perfect
+
 const FALLING_NOTE = preload("res://objects/fallingNote/falling_note.tscn")
 # Derived from rough placement of TopLine and BottomLine
 const TOP_LINE: int = 420
@@ -32,6 +36,7 @@ func _process(delta: float) -> void:
 	for column in columnNotes:
 		while column.size() > 0 and column[0].position.y > 650:
 			column[0].deactivateNote()
+			miss.emit()
 			column.pop_front()
 
 func spawnRandomNote() -> void:
@@ -70,9 +75,12 @@ func checkNote(index: int) -> void:
 	# we check outwards 32px either direction for misses
 	if curPosition < TOP_LINE-32 or curPosition > BOTTOM_LINE+32:
 		print("MISSED")
+		miss.emit()
 	# we check inwards 32px to check for partial hits
 	elif curPosition < TOP_LINE+32 or curPosition > BOTTOM_LINE-32:
 		print("GOOD")
+		good.emit()
 	# otherwise we consider it perfect
 	else:
 		print("PERFECT")
+		perfect.emit()
