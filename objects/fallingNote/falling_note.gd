@@ -34,6 +34,7 @@ func deactivateNote() -> void:
 	down_arrow.hide()
 	up_arrow.hide()
 	right_arrow.hide()
+	queue_free()
 
 func _process(delta: float) -> void:
 	if active:

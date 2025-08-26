@@ -22,3 +22,8 @@ var flat: int = 0:
 
 func _updateTotal() -> void:
 	total = flat*mult
+
+func resetScore() -> void:
+	mult = 1
+	flat = 0
+	

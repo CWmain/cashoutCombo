@@ -1,10 +1,16 @@
 extends CanvasLayer
 
+@export var BaseNoteBurstContents: int = 4
+@export var BaseNoteBurstGap: float = 1
+@export var BaseNoteGap: float = 0.5
+@export var BaseNoteFallSpeed: float = 1
+
 # The amount of notes in a burst
 @export var noteBurstContents: int = 4
 
 # The minimum timer gap for burst and noteGap
 const MIN_GAP: float = 0.1
+
 
 #The time between each note burst
 @export var noteBurstGap: float = 1:
@@ -76,6 +82,25 @@ func _process(delta: float) -> void:
 func startGame() -> void:
 	note_gap_timer.start()
 
+func resetBoard() -> void:
+	# Clear all notes
+	for column in columnNotes:
+		for note in column:
+			note.deactivateNote()
+		column.clear()
+	#Reset spawnedNotes count as they have been cleared
+	spawnedNotes = 0
+
+	# Reset starting values to base (may be modified by shop in the future)
+	noteBurstContents = BaseNoteBurstContents
+	noteBurstGap = BaseNoteBurstGap
+	noteGap = BaseNoteGap
+	noteFallSpeed = BaseNoteFallSpeed
+	
+	note_burst_timer.stop()
+	note_gap_timer.stop()
+	note_gap_timer.start()
+	
 func _on_noteGapTimer() -> void:
 	if spawnedNotes == noteBurstContents:
 		note_gap_timer.stop()
