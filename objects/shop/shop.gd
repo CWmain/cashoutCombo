@@ -18,7 +18,7 @@ signal nextRound
 
 var currentMoney: float:
 	set(value):
-		currentMoney = value
+		currentMoney = snappedf(value, 0.01)
 		money_display.text = "$"+str(currentMoney)
 		
 

@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 		shop.process_mode = Node.PROCESS_MODE_INHERIT
 		rythm_board.process_mode = Node.PROCESS_MODE_DISABLED
 		shop.currentMoney = score_board.total
+		score_board.resetScore()
 		shop.cashout()
 
 func _on_miss() -> void:

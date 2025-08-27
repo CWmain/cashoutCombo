@@ -16,7 +16,7 @@ var mult: float = 1:
 		_updateTotal()
 var flat: int = 0:
 	set(value):
-		flat = max(0,snappedf(value, 0.01))
+		flat = max(0, value)
 		flat_label.text = str(flat)
 		_updateTotal()
 
