@@ -19,8 +19,6 @@ offset = Vector2(30, 5)
 transform = Transform2D(1, 0, 0, 1, 30, 5)
 
 [node name="score_board" parent="." instance=ExtResource("3_g0siu")]
-offset = Vector2(480, 0)
-transform = Transform2D(1, 0, 0, 1, 480, 0)
 
 [node name="shop" parent="." instance=ExtResource("4_g0siu")]
 offset = Vector2(480, 325)
