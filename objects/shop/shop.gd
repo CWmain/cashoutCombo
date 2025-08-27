@@ -20,7 +20,7 @@ var currentMoney: float:
 	set(value):
 		currentMoney = value
 		money_display.text = "$"+str(currentMoney)
-		color_rect.hide()
+		
 
 func _ready() -> void:
 	item1_button.pressed.connect(_buyItem)
@@ -28,6 +28,7 @@ func _ready() -> void:
 	item3_button.pressed.connect(_buyItem)
 	next_round.pressed.connect(_nextRound)
 	
+	cashOutImpossible()
 	updateMoneyRequiredLabel()
 
 func cashout() -> void:
@@ -36,6 +37,8 @@ func cashout() -> void:
 		return
 	currentMoney -= moneyCashOut
 	moneyCashOut *= 2
+	print("Cashing out")
+	color_rect.hide()
 	updateMoneyRequiredLabel()
 	
 
@@ -52,6 +55,15 @@ func _buyItem() -> void:
 func _nextRound() -> void:
 	color_rect.show()
 	nextRound.emit()
+	cashOutImpossible()
 	
 func updateMoneyRequiredLabel() -> void:
 	money_required_label.text = "$" + str(moneyCashOut)
+	
+func cashOutPossible():
+	print("Possible")
+	color_rect.color = Color.DARK_GREEN
+	
+func cashOutImpossible():
+	print("impossible")
+	color_rect.color = Color.DARK_RED
