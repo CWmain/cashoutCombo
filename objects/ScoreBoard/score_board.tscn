@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj8mubde8y5rx"]
+[gd_scene load_steps=3 format=3 uid="uid://bj8mubde8y5rx"]
 
 [ext_resource type="Script" uid="uid://dgettu4qnn21k" path="res://objects/ScoreBoard/score_board.gd" id="1_nk0dg"]
+[ext_resource type="Theme" uid="uid://3le31ahswyn0" path="res://fonts/defaultTheme.tres" id="2_b4qey"]
 
 [node name="score_board" type="CanvasLayer"]
 script = ExtResource("1_nk0dg")
@@ -8,6 +9,7 @@ script = ExtResource("1_nk0dg")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_b4qey")
 
 [node name="Total" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true

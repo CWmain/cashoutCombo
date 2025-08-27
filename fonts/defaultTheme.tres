@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3le31ahswyn0"]
+
+[ext_resource type="FontFile" uid="uid://berh3sk157mjf" path="res://fonts/Anton-Regular.ttf" id="1_ltja2"]
+
+[resource]
+default_font = ExtResource("1_ltja2")
+Label/constants/outline_size = 10

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=960
 window/size/viewport_height=650
 
+[gui]
+
+theme/custom_font="uid://berh3sk157mjf"
+
 [input]
 
 Left={
