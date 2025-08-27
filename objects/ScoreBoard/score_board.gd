@@ -7,12 +7,12 @@ extends CanvasLayer
 var total: float = 0:
 	set(value):
 		total = snappedf(value, 0.01)
-		total_label.text = str(total)
+		total_label.text = str(total).pad_decimals(2)
 		
 var mult: float = 1:
 	set(value):
 		mult = max(1,snappedf(value, 0.01))
-		mult_label.text = str(mult)
+		mult_label.text = str(mult).pad_decimals(2)
 		_updateTotal()
 var flat: int = 0:
 	set(value):
