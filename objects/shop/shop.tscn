@@ -61,9 +61,15 @@ text = "Next Round"
 offset_top = -1.0
 offset_right = 155.0
 offset_bottom = 124.0
-color = Color(0, 0, 0, 1)
+color = Color(0.282353, 0, 0, 1)
+
+[node name="moneyRequiredLabel" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_left = 43.0
 offset_top = 32.0
 offset_right = 109.0

@@ -7,9 +7,10 @@ extends CanvasLayer
 
 @onready var color_rect: ColorRect = $ColorRect
 
-@export var moneyCashOut: int = 100
+@export var moneyCashOut: int = 1000
 
 @onready var money_display: Label = $VBoxContainer/MoneyDisplay
+@onready var money_required_label: Label = $ColorRect/moneyRequiredLabel
 
 var item1_price: float = 50
 
@@ -26,12 +27,16 @@ func _ready() -> void:
 	item2_button.pressed.connect(_buyItem)
 	item3_button.pressed.connect(_buyItem)
 	next_round.pressed.connect(_nextRound)
+	
+	updateMoneyRequiredLabel()
 
 func cashout() -> void:
 	if currentMoney < moneyCashOut:
 		print("Game Over")
 		return
 	currentMoney -= moneyCashOut
+	moneyCashOut *= 2
+	updateMoneyRequiredLabel()
 	
 
 func recheckPrice() -> void:
@@ -48,3 +53,5 @@ func _nextRound() -> void:
 	color_rect.show()
 	nextRound.emit()
 	
+func updateMoneyRequiredLabel() -> void:
+	money_required_label.text = "$" + str(moneyCashOut)
