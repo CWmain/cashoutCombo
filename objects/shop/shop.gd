@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-@onready var item1_button: Button = $VBoxContainer/HBoxContainer/VBoxContainer/Button
-@onready var item2_button: Button = $VBoxContainer/HBoxContainer/VBoxContainer2/Button
-@onready var item3_button: Button = $VBoxContainer/HBoxContainer/VBoxContainer3/Button
+@onready var item1_button: Button = $VBoxContainer/MissStuff/HBoxContainer/VBoxContainer/MissMult
+@onready var item2_button: Button = $VBoxContainer/MissStuff/HBoxContainer/VBoxContainer2/MissFlat
 @onready var next_round: Button = $VBoxContainer/NextRound
 
 @onready var color_rect: ColorRect = $ColorRect
@@ -16,6 +15,16 @@ var item1_price: float = 50
 
 signal nextRound
 
+signal incrementFlatMiss
+signal incrementMultMiss
+
+signal incrementFlatGood
+signal incrementMultGood
+
+signal incrementFlatPerfect
+signal incrementMultPerfect
+
+
 var currentMoney: float:
 	set(value):
 		currentMoney = snappedf(value, 0.01)
@@ -25,7 +34,7 @@ var currentMoney: float:
 func _ready() -> void:
 	item1_button.pressed.connect(_buyItem)
 	item2_button.pressed.connect(_buyItem)
-	item3_button.pressed.connect(_buyItem)
+
 	next_round.pressed.connect(_nextRound)
 	
 	cashOutImpossible()
@@ -37,7 +46,6 @@ func cashout() -> void:
 		return
 	currentMoney -= moneyCashOut
 	moneyCashOut *= 2
-	print("Cashing out")
 	color_rect.hide()
 	updateMoneyRequiredLabel()
 	
@@ -61,9 +69,7 @@ func updateMoneyRequiredLabel() -> void:
 	money_required_label.text = "$" + str(moneyCashOut)
 	
 func cashOutPossible():
-	print("Possible")
 	color_rect.color = Color.DARK_GREEN
 	
 func cashOutImpossible():
-	print("impossible")
 	color_rect.color = Color.DARK_RED

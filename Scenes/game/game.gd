@@ -1,5 +1,14 @@
 extends Control
 
+@export var miss_mult: float = 0.5
+@export var miss_flat: int = 50
+
+@export var good_mult: float = 0.01
+@export var good_flat: int = 10
+
+@export var perfect_mult: float = 0.1
+@export var perfect_flat: int = 50
+
 @onready var rythm_board: CanvasLayer = $RythmBoard
 @onready var score_board: CanvasLayer = $score_board
 @onready var shop: CanvasLayer = $shop
@@ -20,18 +29,18 @@ func _process(delta: float) -> void:
 		shop.cashout()
 
 func _on_miss() -> void:
-	score_board.mult -= 0.5
-	score_board.flat -= 5
+	score_board.mult -= miss_mult
+	score_board.flat -= miss_flat
 	recheckCheckout()
 	
 func _on_good() -> void:
-	score_board.mult += 0.01
-	score_board.flat += 10
+	score_board.mult += good_mult
+	score_board.flat += good_flat
 	recheckCheckout()
 	
 func _on_perfect() -> void:
-	score_board.mult += 0.1
-	score_board.flat += 50
+	score_board.mult += perfect_mult
+	score_board.flat += perfect_flat
 	recheckCheckout()
 
 # updates the red - green indicator for if a checkout is possible

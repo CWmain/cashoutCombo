@@ -16,41 +16,39 @@ theme = ExtResource("2_jdixd")
 layout_mode = 2
 text = "Money ="
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MissStuff" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="MissLabel" type="Label" parent="VBoxContainer/MissStuff"]
+layout_mode = 2
+text = "Decrease Miss Penalty"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MissStuff"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MissStuff/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MissStuff/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Item 1"
+text = "Flat"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-text = "Buy"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Item 2"
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MissMult" type="Button" parent="VBoxContainer/MissStuff/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Buy"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MissStuff/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="VBoxContainer/MissStuff/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Item 3"
+text = "Mult"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="MissFlat" type="Button" parent="VBoxContainer/MissStuff/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 focus_mode = 0
 text = "Buy"
@@ -62,8 +60,8 @@ text = "Next Round"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_top = -1.0
-offset_right = 167.0
-offset_bottom = 134.0
+offset_right = 191.0
+offset_bottom = 165.0
 theme = ExtResource("2_jdixd")
 color = Color(0.00852867, 0.162174, 0.120011, 1)
 
@@ -74,11 +72,12 @@ offset_bottom = 23.0
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 32.0
-offset_right = 109.0
-offset_bottom = 81.0
+offset_left = 56.0
+offset_top = 54.0
+offset_right = 122.0
+offset_bottom = 107.0
 theme = ExtResource("2_jdixd")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "Space to
 Cashout"
+horizontal_alignment = 1
